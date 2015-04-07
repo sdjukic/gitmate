@@ -1,4 +1,3 @@
-#!/usr/bin/ruby -w
 
 require 'yaml'
 require 'net/http'
