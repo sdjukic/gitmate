@@ -1,6 +1,7 @@
 Gem::Specification.new do |s|
 	s.name        = 'gitmate'
 	s.version     = '0.0.1'
+	s.executables  = ['gitmate']
 	s.date        = '2015-04-07'
 	s.summary     = 'Interface with github via command line.'
 	s.description = 'Gem that interfaces with github over command line. 
