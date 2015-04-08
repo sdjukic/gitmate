@@ -35,9 +35,13 @@ class Gitmate < Thor
               gitmate repos <repository_name> --details \e[0m "
       else
         repo = @@repo_cache.find{ |r| r["name"] == the_repo}
-        puts "\e[34m #{repo["name"]} \e[0m "
-        $repo_data["InterestingKeys"].each do |p|
-          puts "\e[32m #{p} #{repo[p]} \e[0m"
+        if repo
+          puts "\e[34m #{repo["name"]} \e[0m "
+          $repo_data["InterestingKeys"].each do |p|
+            puts "\e[32m #{p} #{repo[p]} \e[0m"
+          end
+        else
+          puts "\e[31m No such repository. \e[0m"
         end
       end
     end
