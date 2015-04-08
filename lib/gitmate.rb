@@ -41,7 +41,7 @@ class Gitmate < Thor
             puts "\e[32m #{p} #{repo[p]} \e[0m"
           end
         else
-          puts "\e[31m No such repository. \e[0m"
+          puts "\e[31m ERROR: No such repository. \e[0m"
         end
       end
     end
