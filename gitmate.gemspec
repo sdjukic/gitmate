@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 	s.authors     = ['Slavisa Djukic']
 	s.email       = 'ssdjuka@gmail.com'
 	s.files       = ['lib/gitmate.rb', 'lib/gitmate/repos.rb', 
-		             'lib/gitmate/zen.rb']
+		             'lib/gitmate/zen.rb', 'lib/gitmate/generators.rb']
 	s.homepage    = 'https://github.com/sdjukic/gitmate'
 	s.license     = 'MIT'
 end

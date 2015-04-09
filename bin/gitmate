@@ -3,5 +3,5 @@ require 'rubygems'
 require 'gitmate'
 
 begin 
-  Gitmate.start
+  Gitmate::CLI.start
 end
