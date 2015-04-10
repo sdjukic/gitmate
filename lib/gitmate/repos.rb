@@ -17,16 +17,6 @@ class Repos
   end
 
   def self.create_repo(repo_name)
-  	repo_uri = URI.parse("https://api.github.com/user/repos")
-  	req = Net::HTTP::Post.new(repo_uri, initheader = {'Content-Type' => 'application/json'})
-  	repo_data = {'name' => repo_name}.to_json
-  	req.set_form_data({name: repo_name})
-    req.basic_auth("#{@@user_data["user"]}", "#{@@user_data["password"]}")
-    res = Net::HTTP.start(repo_uri.hostname, repo_uri.port,
-    	use_ssl: repo_uri.scheme == 'https' )  {|http| http.request(req)}
-
-  	puts res.code
-  	puts res.message
-  	puts res.body
+  	# will use curl which works and don't have to store user credentials
   end
 end
