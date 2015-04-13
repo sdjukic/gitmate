@@ -21,9 +21,9 @@ module Gitmate
     	puts resp
     end
 
-   desc "repos [repository]", "Different actions on your gitrepositories."
-   method_option :list, aliases: '-l', desc: 'List all repositories'
-   method_option :details, aliases: '-d', desc: 'Detailed information on a depo'
+   desc "repos <user_name> [repository]", "Display user's repositories."
+   method_option :list, aliases: '-l', desc: 'List all repositories for a user'
+   method_option :details, aliases: '-d', desc: 'Detailed information about user\'s repository'
    def repos(user_name, the_repo=nil)
     
      if options[:list]
@@ -38,14 +38,14 @@ module Gitmate
      end
           
      if options[:details]
-       unless the_repo
+       resp =  Github::GitApiCalls.api_call("user/repos", {user: user_name})
          puts "\e[31m ERROR: missing repository name.\n
                  gitmate repos <repository_name> --details \e[0m "
        else
-         repo = @@repo_cache.find{ |r| r["name"] == the_repo}
+         #repo = @@repo_cache.find{ |r| r["name"] == the_repo}
          if repo
            puts "\e[34m #{repo["name"]} \e[0m "
-           $repo_data["InterestingKeys"].each do |p|
+           #$repo_data["InterestingKeys"].each do |p|
             puts "\e[32m #{p} #{repo[p]} \e[0m"
           end
          else
