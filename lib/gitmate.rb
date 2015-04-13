@@ -1,25 +1,30 @@
 require 'thor'
-require 'gitmate/zen'
 require 'gitmate/repos'
 require 'gitmate/generators'
-require 'yaml'
-
-$repo_data = YAML.load_file('conf.yml') 
 
 module Gitmate
 
-  @@zen = Zen.new
-  @@repo_cache = Repos.get_repos
-  
   class CLI < Thor
+
+    desc "zen", "Inspirational quote from github."
+    method_option desc: "A quote from github to inspire you."
+    def zen
+      resp = Github::GitApiCalls.api_call("zen", {zen: true})
+      puts "\e[30m #{resp} \e[0m"
+    end
+
+    desc "user", "General information about the user."
+    method_option :name, aliases: '-n', desc: "User name"
+    def user_details
+    	resp = Github::GitApiCalls.api_call("user", {user: options[:name]})
+    	puts resp
+    end
+
     register(Gitmate::CreateRepository, "create", "counter", 
              "Creates git repo in local directory")
   end
 end
-#    method_option desc: "A quote from github to inspire you."
-#    def zen
-#      puts "\e[30m #{@@zen.message} \e[0m"
-#    end
+#    
 #  end
 
 #  desc "repos [repository]", "Different actions on your gitrepositories."
