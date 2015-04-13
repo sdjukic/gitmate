@@ -10,7 +10,7 @@ module Gitmate
   	def create_local
   	  FileUtils.mkdir(repo_name) unless File.directory?(repo_name)
   	  FileUtils.cd(repo_name)
-  	  system "git init"
+  	  `git init`
   	end
 
   	def create_remote
@@ -18,4 +18,5 @@ module Gitmate
       Repos.create_repo(repo_name)
   	end
   end
+
 end
