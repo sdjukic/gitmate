@@ -30,12 +30,11 @@ module Gitmate
       resp =  Github::GitApiCalls.api_call("user/repos", {user: user_name})
       puts "\e[34m Here are all your repositories:\e[0m"
      
-      a = resp.split("\r\n")
-      #a.each do |line|
-      #  m = /\"name\"/.match(line) 
-      #  puts m if m
-      #end
-      puts a.size
+      a = JSON.parse(resp)
+      a.each do |line|
+        puts "\e[32m #{p} #{line["name"]} \e[0m"
+      end
+      
      end
           
      if options[:details]
